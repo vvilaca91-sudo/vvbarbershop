@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Marcações</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <img src="imagens/logo.png" class="logo" alt="Logo">
+    </nav>
+  </header>
+
+  <h2>Painel de Marcações</h2>
+ <div style="text-align:right; margin: 20px; margin-bottom: 0px;">
+      <label for="filtroData">Filtrar por data:</label>
+      <input type="date" id="filtroData">
+    </div>
+  <section class="admin-section">
+   
+    <div class="admin-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Serviço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-marcacoes">
+          <tr>
+            <td colspan="5">A carregar marcações...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+     
+  </section>
+ 
+  <div style="text-align:center; margin: 20px 0;">
+    <button id="logoutBtn" class="marqueja">Sair</button>
+  </div>
+
+  <script>
+    const supabaseClient = window.supabase.createClient(
+      "https://kispxcgpyujynhzcacfg.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtpc3B4Y2dweXVqeW5oemNhY2ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4NzEzNzQsImV4cCI6MjA5MDQ0NzM3NH0.gq5yIzYwQFtmnVS5V_2Jayfe4l1v_ngCxBfbJzyUikU"
+    );
+
+    async function verificarLogin() {
+      const { data, error } = await supabaseClient.auth.getUser();
+
+      if (error || !data.user) {
+        window.location.href = "login.html";
+        return false;
+      }
+
+      return true;
+    }
+
+    async function carregarMarcacoes() {
+  const autenticado = await verificarLogin();
+  if (!autenticado) return;
+
+  const tbody = document.getElementById("tabela-marcacoes");
+  const dataSelecionada = document.getElementById("filtroData").value;
+
+  let query = supabaseClient
+    .from("marcacoes")
+    .select("*")
+    .order("data", { ascending: true })
+    .order("hora", { ascending: true });
+
+  // aplicar filtro se houver data
+  if (dataSelecionada) {
+    query = query.eq("data", dataSelecionada);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.log(error);
+    tbody.innerHTML = `<tr><td colspan="6">Erro ao carregar marcações.</td></tr>`;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6">Sem marcações.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = "";
+
+  data.forEach(marcacao => {
+    const linha = document.createElement("tr");
+
+    linha.innerHTML = `
+      <td>${marcacao.nome}</td>
+      <td>${marcacao.telefone}</td>
+      <td>${marcacao.data}</td>
+      <td>${String(marcacao.hora).slice(0,5)}</td>
+      <td>${marcacao.servico}</td>
+      <td>
+        <button class="btn-apagar" data-id="${marcacao.id}">Apagar</button>
+      </td>
+    `;
+
+    tbody.appendChild(linha);
+  });
+}
+
+    document.getElementById("logoutBtn").addEventListener("click", async function() {
+      await supabaseClient.auth.signOut();
+      window.location.href = "login.html";
+    });
+
+    carregarMarcacoes();
+
+    document.getElementById("filtroData").addEventListener("change", () => {
+  carregarMarcacoes();
+});
+  </script>
+
+  <script>
+document.addEventListener("click", async function(e) {
+  if (!e.target.classList.contains("btn-apagar")) return;
+
+  const id = e.target.dataset.id;
+
+  const confirmar = confirm("Queres mesmo apagar esta marcação?");
+  if (!confirmar) return;
+
+  const { error } = await supabaseClient
+    .from("marcacoes")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert("Erro ao apagar 😢");
+    console.log(error);
+    return;
+  }
+
+  // atualizar tabela
+  carregarMarcacoes();
+});
+</script>
+
+</body>
+</html>
