@@ -36,7 +36,7 @@
         </thead>
         <tbody id="tabela-marcacoes">
           <tr>
-            <td colspan="5">A carregar marcações...</td>
+            <td colspan="6">A carregar marcações...</td>
           </tr>
         </tbody>
       </table>
@@ -134,7 +134,7 @@ document.addEventListener("click", async function(e) {
 
   const id = e.target.dataset.id;
 
-  const confirmar = confirm("Queres mesmo apagar esta marcação?");
+  const confirmar = confirm("Tem a certeza de que quer apagar esta marcação?");
   if (!confirmar) return;
 
   const { error } = await supabaseClient
