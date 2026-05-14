@@ -120,6 +120,14 @@ section {
   width: 100%;
 }
 
+.nav-link.active {
+  color: var(--primary-gold);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
 .cta-button {
   background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
   color: #000;
@@ -227,7 +235,126 @@ section {
   }
 }
 
-/* ==================== PAGE HEADER ==================== */
+/* ==================== SCROLL REVEAL ANIMATIONS ==================== */
+@keyframes revealFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes revealRotate {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* Classes para revelar elementos ao scroll */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+[data-reveal].reveal {
+  animation: revealFadeIn 0.8s ease-out forwards;
+}
+
+/* Seções inteiras */
+.section-header {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.section-header.reveal-section {
+  animation: revealFadeIn 0.7s ease-out forwards;
+}
+
+/* Cards de serviços */
+.servico-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.servico-card.reveal-child {
+  animation: revealFadeIn 0.7s ease-out forwards;
+  animation-delay: calc(0.1s * var(--child-index, 0));
+}
+
+/* Cards de horários */
+.horario-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.horario-card.reveal-child {
+  animation: revealFadeIn 0.7s ease-out forwards;
+  animation-delay: calc(0.1s * var(--child-index, 0));
+}
+
+/* Tabelas */
+.precos-table {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.precos-table.reveal-child {
+  animation: revealFadeIn 0.7s ease-out forwards;
+}
+
+/* Info items de contacto */
+.info-item {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.info-item.reveal-child {
+  animation: revealSlideInLeft 0.7s ease-out forwards;
+  animation-delay: calc(0.1s * var(--child-index, 0));
+}
+
+/* PAGE HEADER ==================== */
 .page-header {
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(184, 148, 26, 0.05));
   padding: 3rem 2rem;
@@ -744,9 +871,9 @@ footer {
 
 /* ==================== RESPONSIVE - TABLET (768px - 1024px) ==================== */
 @media (min-width: 768px) and (max-width: 1024px) {
+  /* NAVEGAÇÃO */
   .nav {
-    padding: 1rem 1.5rem;
-    gap: 1.5rem;
+    padding: 15px 20px;
   }
 
   .nav-links {
@@ -767,6 +894,16 @@ footer {
     font-size: 0.9rem;
   }
 
+  .navbotom {
+    padding: 8px 20px;
+    font-size: 18px;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  /* HERO */
   .hero {
     height: 500px;
     padding: 0 2rem;
@@ -776,8 +913,17 @@ footer {
     font-size: 2.8rem;
   }
 
+  .hero h1 {
+    font-size: 42px;
+    padding-top: 80px;
+  }
+
   .hero-subtitle {
     font-size: 1.1rem;
+  }
+
+  .hero p {
+    font-size: 20px;
   }
 
   .hero-cta {
@@ -785,34 +931,82 @@ footer {
     font-size: 0.95rem;
   }
 
+  /* SEÇÕES */
   .section-header h2 {
     font-size: 2.2rem;
   }
 
+  /* SERVIÇOS */
   .servicos-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 
-  .precos-container,
-  .sobrenos-container,
-  .contacto-container {
+  .servicos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* PREÇOS */
+  .precos-container {
     gap: 2rem;
   }
 
-  .precos-image img,
-  .sobrenos-image img {
-    max-width: 100%;
+  .price {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
   }
 
+  .precos-image img,
+  .priceimg {
+    max-width: 100%;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  .tabelaprice {
+    width: 100%;
+  }
+
+  /* SOBRE NÓS */
+  .sobrenos-container {
+    gap: 2rem;
+  }
+
+  .sobrenos {
+    gap: 30px;
+    text-align: center;
+  }
+
+  .sobrenos-image img,
+  .sobrenosimg {
+    max-width: 100%;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  /* HORÁRIOS */
   .horarios-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .mapa-wrapper iframe {
-    height: 350px;
+  /* CONTACTO */
+  .contacto-container {
+    gap: 2rem;
   }
 
+  .mapa-wrapper iframe,
+  .mapa iframe {
+    height: 350px;
+    max-width: 90%;
+  }
+
+  .contacto {
+    max-width: 80%;
+  }
+
+  /* PÁGINAS SECUNDÁRIAS */
   .page-header h1 {
     font-size: 2rem;
   }
@@ -851,11 +1045,11 @@ footer {
   .nav {
     flex-direction: row;
     justify-content: space-between;
-    padding: 0.8rem 1rem;
-    height: auto;
-    gap: 0;
     align-items: center;
     flex-wrap: wrap;
+    padding: 0.8rem 1rem;
+    height: auto;
+    gap: 0.75rem;
   }
 
   .brand {
@@ -867,42 +1061,83 @@ footer {
     letter-spacing: 1px;
   }
 
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    gap: 0;
-    background: rgba(10, 10, 10, 0.99);
-    padding: 0;
-    border-bottom: 2px solid var(--border-color);
-    z-index: 999;
-    list-style: none;
-    width: 100%;
+  .cta-button {
+    order: 2;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    width: auto;
+    text-align: center;
+    margin-top: 0;
+    flex-shrink: 0;
   }
 
-  .nav-links.active {
-    display: flex !important;
+  .nav-links {
+    display: flex;
+    order: 3;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0.25rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.12);
+    list-style: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-link {
-    padding: 1rem 1.5rem;
-    font-size: 0.85rem;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-    display: block;
-    width: 100%;
-    text-align: left;
+    padding: 0.1rem 0.05rem;
+    font-size: 0.5rem;
+    border: none;
+    border-radius: 999px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    transition: var(--transition);
+    color: var(--text-secondary);
+    text-decoration: none;
   }
 
-  .cta-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.75rem;
-    order: 3;
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+    transition: var(--transition);
+  }
+
+  .nav-link:hover {
+    color: var(--primary-gold);
+  }
+
+  .nav-link:hover::after {
     width: 100%;
-    text-align: center;
-    margin-top: 0.5rem;
+  }
+
+  .nav-link.active {
+    color: var(--primary-gold);
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
   }
 
   /* HERO */
@@ -915,22 +1150,22 @@ footer {
   }
 
   .hero-title {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
   }
 
   .hero-brand {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
   }
 
   .hero-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.60rem;
   }
 
   .hero-cta {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.6rem;
   }
 
   /* SEÇÕES */
@@ -1479,65 +1714,3 @@ bottom: 20px;
 
 
 
-@media (min-width: 769px) and (max-width: 1024px) {
-    .nav {
-    padding: 15px 20px;
-  }
-
-  .navbotom {
-    padding: 8px 20px;
-    font-size: 18px;
-  }
-
-  .logo {
-    width: 80px;
-  }
-
-  .hero {
-    height: 500px;
-  }
-
-  .hero h1 {
-    font-size: 42px;
-    padding-top: 80px;
-  }
-
-  .hero p {
-    font-size: 20px;
-  }
-
-   .servicos {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .price {
-    flex-direction:column;
-    gap: 30px;
-    text-align: center;
-}
-  .sobrenos {
-    
-    gap: 30px;
-    text-align: center;
-  }
-
-  .priceimg,
-  .sobrenosimg {
-    width: 80%;
-    max-width: 500px;
-  }
-
-  .tabelaprice {
-    width: 100%;
-  }
-
-   .mapa iframe {
-    max-width: 90%;
-    height: 350px;
-  }
-
-  .contacto {
-    max-width: 80%;
-  }
-}
