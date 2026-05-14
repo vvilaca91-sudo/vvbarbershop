@@ -11,15 +11,21 @@
 
   <header>
     <nav class="nav">
-      <img src="imagens/logo.png" class="logo" alt="Logo">
+      <a href="index.html" class="brand" aria-label="BarberShop">
+        <span class="brand-text">BarberShop</span>
+      </a>
     </nav>
   </header>
 
-  <h2>Painel de Marcações</h2>
- <div style="text-align:right; margin: 20px; margin-bottom: 0px;">
-      <label for="filtroData">Filtrar por data:</label>
-      <input type="date" id="filtroData">
-    </div>
+  <section class="page-header">
+    <h1>Painel de Marcações</h1>
+    <p>Visualize e gerencie todas as marcações do cliente</p>
+  </section>
+
+  <div class="admin-filter">
+    <label for="filtroData">Filtrar por data:</label>
+    <input type="date" id="filtroData">
+  </div>
   <section class="admin-section">
    
     <div class="admin-container">
@@ -36,7 +42,7 @@
         </thead>
         <tbody id="tabela-marcacoes">
           <tr>
-            <td colspan="6">A carregar marcações...</td>
+            <td colspan="5">A carregar marcações...</td>
           </tr>
         </tbody>
       </table>
@@ -134,7 +140,7 @@ document.addEventListener("click", async function(e) {
 
   const id = e.target.dataset.id;
 
-  const confirmar = confirm("Tem a certeza de que quer apagar esta marcação?");
+  const confirmar = confirm("Queres mesmo apagar esta marcação?");
   if (!confirmar) return;
 
   const { error } = await supabaseClient

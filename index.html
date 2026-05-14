@@ -3,161 +3,277 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BarberShop</title>
+  <title>BarberShop - Cortes Profissionais & Barba Desenhada</title>
 
-<!-- LIGAÇÃO AO CSS -->
   <link rel="stylesheet" href="styles/style.css">
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
+
 <body>
+  <!-- NAVEGAÇÃO -->
   <header>
-<!-- NAVBAR -->
     <nav class="nav" aria-label="Navegação principal">
-      <div class="brand">
-        <img src="imagens/logo.png" alt="Logo" class="logo">  </div>
-  
-      <a class="navbotom" href="#servicos">Serviços</a>
-      <a class="navbotom" href="#precos">Tabela & Preços</a>
-      <a class="navbotom" href="#sobrenos">Sobre nós</a>
-      <a class="navbotom" href="#horarios">Horário</a>
-      <a class="navbotom" href="#contacto">Contacto</a>
+      <a href="index.html" class="brand" aria-label="BarberShop">
+        <span class="brand-text">BarberShop</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li><a class="nav-link" href="#precos">Preços</a></li>
+        <li><a class="nav-link" href="#sobrenos">Sobre</a></li>
+        <li><a class="nav-link" href="#horarios">Horário</a></li>
+        <li><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
+
+      <a href="marcacao.html" class="cta-button">Agendar</a>
     </nav>
-      
-<section class="hero" aria-label="Seção de boas-vindas">
-      <div class="hero-contain">
-        <h1>Bem-vindo<br>
-           à BarberShop</h1>
-        <p>O melhor lugar para cuidar do seu estilo</p>
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-label="Seção de boas-vindas">
+      <div class="hero-content">
+        <h1 class="hero-brand">BarberShop</h1>
+        <h1 class="hero-title">Seu Estilo,<br>Nossa Especialidade</h1>
+        <p class="hero-subtitle">Experiência profissional em cortes, barba e estilo pessoal</p>
+        <a href="marcacao.html" class="hero-cta">Agendar Agora</a>
       </div>
-      <div class="marquejacontainer">
-      <a href="marcacao.html" class="marqueja">Marque já a sua visita!</a>
-      </div>
-</section>      
+    </section>  
   </header>
 
-    <!-- Serviços -->
-  <h2>Conheça os nossos serviços!</h2>
-    <section class="servicos" id="servicos" aria-label="Trabalhos da barbearia">
-      <figure class="imgservicos">
-      <img src="imagens/cabelo2.png" alt="Corte clássico">
-      <figcaption><i>Corte clássico + acabamento à tesoura</i></figcaption>
-      </figure>
 
-      <figure class="imgservicos">
-      <img src="imagens/barba.png" alt="Barba desenhada">
-      <figcaption><i>Barba desenhada com navalha</i></figcaption>
-      </figure>
+  <!-- SERVIÇOS -->
+  <section class="servicos-section" id="servicos" aria-label="Serviços da barbearia">
+    <div class="section-header">
+      <h2>Nossos Serviços</h2>
+      <p class="section-subtitle">Cuidado profissional para o seu estilo</p>
+    </div>
 
-      <figure class="imgservicos">
-      <img src="imagens/cabeloebarba.png" alt="cabelo e barba">
-      <figcaption><i>Cabelo e barba personalizados</i></figcaption>
-      </figure>
+    <div class="servicos-grid">
+      <article class="servico-card">
+        <div class="servico-image">
+          <img src="imagens/cabelo2.png" alt="Corte clássico">
+        </div>
+        <div class="servico-info">
+          <h3>Corte Clássico</h3>
+          <p>Corte clássico com acabamento à tesoura, realçando seus melhores traços.</p>
+        </div>
+      </article>
 
-      <figure class="imgservicos">
-      <img src="imagens/premium.png" alt="Premium">
-      <figcaption><i>Cabelo e barba express/premium</i></figcaption>
-      </figure>
-    </section>  
+      <article class="servico-card">
+        <div class="servico-image">
+          <img src="imagens/barba.png" alt="Barba desenhada">
+        </div>
+        <div class="servico-info">
+          <h3>Barba Desenhada</h3>
+          <p>Barba desenhada com navalha, com precisão e técnica profissional.</p>
+        </div>
+      </article>
 
-    <!-- Tabela de preços -->
-<h2>Confira nossa tabela de preços!</h2>
-<section class="price" id="precos" aria-label="Tabela de preços dos serviços">  
-  <div class="price-img">
-    <img src="imagens/price.png" alt="Tabela de preços" class="priceimg">
-  </div>
-  <div class="tabelaprice">
-    <table class="tabelaprice">
-      <tr>
-        <th>Serviço</th>
-        <th>Preço</th>
-      </tr>
-      <tr>
-        <td>Corte clássico + acabamento à tesoura</td>
-        <td>€15</td>
-      </tr>
-      <tr>
-        <td>Barba desenhada com navalha</td>
-        <td>€10</td>
-      </tr>
-      <tr>
-        <td>Cabelo e barba personalizados</td>
-        <td>€25</td>
-      </tr>
-      <tr>
-        <td>Cabelo e barba express/premium</td>
-        <td>€30</td>
-      </tr>
-    </table>    
-  </div>  
-</section>
+      <article class="servico-card">
+        <div class="servico-image">
+          <img src="imagens/cabeloebarba3.png" alt="Pacote completo">
+        </div>
+        <div class="servico-info">
+          <h3>Pacote Completo</h3>
+          <p>Cabelo e barba personalizados, o combo perfeito para seu estilo.</p>
+        </div>
+      </article>
+
+      <article class="servico-card">
+        <div class="servico-image">
+          <img src="imagens/premium.png" alt="Serviço premium">
+        </div>
+        <div class="servico-info">
+          <h3>Serviço Premium</h3>
+          <p>Experiência express ou premium com máxima atenção aos detalhes.</p>
+        </div>
+      </article>
+    </div>
+  </section>  
+
+  <!-- PREÇOS -->
+  <section class="precos-section" id="precos" aria-label="Tabela de preços">
+    <div class="section-header">
+      <h2>Tabela de Preços</h2>
+      <p class="section-subtitle">Serviços de qualidade com preços acessíveis</p>
+    </div>
+
+    <div class="precos-container">
+      <div class="precos-image">
+        <img src="imagens/price.png" alt="Tabela de preços">
+      </div>
+
+      <div class="precos-table-wrapper">
+        <table class="precos-table">
+          <thead>
+            <tr>
+              <th>Serviço</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Corte clássico + acabamento à tesoura</td>
+              <td class="preco">€15</td>
+            </tr>
+            <tr>
+              <td>Barba desenhada com navalha</td>
+              <td class="preco">€10</td>
+            </tr>
+            <tr>
+              <td>Cabelo e barba personalizados</td>
+              <td class="preco">€25</td>
+            </tr>
+            <tr>
+              <td>Cabelo e barba express/premium</td>
+              <td class="preco">€30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
  
-<!-- Sobre nos -->  
-<h2>Sobre nós</h2>
-<section class="sobrenos" id="sobrenos" aria-label="Informações sobre a barbearia">
-  <div class="sobrenosinfo">
-    <p>Somos uma equipa especializada em proporcionar o melhor serviço de barbearia.</p>
-    <p>Com anos de experiência, oferecemos cortes de cabelo e barba personalizados para realçar o seu estilo único.</p>
-    <p>Na BarberShop, valorizamos a qualidade, a atenção aos detalhes e a satisfação do cliente. Venha nos visitar e experimente um atendimento excepcional!</p>
-  </div>
-  <div class="sobrenosimg">
-    <img src="imagens/sobrenos.jpg" alt="Equipe da barbearia" class="sobrenosimg">
-  </div>
-</section>
+<!-- SOBRE NÓS -->
+  <section class="sobrenos-section" id="sobrenos" aria-label="Sobre a BarberShop">
+    <div class="section-header">
+      <h2>Conheça-nos</h2>
+      <p class="section-subtitle">Tradição, profissionalismo e inovação</p>
+    </div>
 
- <!-- Horários -->
-<h2>Horários</h2>
-<section class="Horarios" id="horarios" aria-label="Horários de funcionamento">
-  <div class="Horarioscontainer">
-    <p>🕓 <strong>Segunda - Sexta:</strong> 09:00 - 13:00 / 14:00 - 20:00</p>
-    <p>🕓 <strong>Sábado:</strong> 09:00 - 13:00 / 14:00 - 20:00</p>
-    <p>❌ <strong>Domingo:</strong> Encerrado</p>    
-  </div>  
-</section>    
+    <div class="sobrenos-container">
+      <div class="sobrenos-content">
+        <h3>Por que escolher a BarberShop?</h3>
+        <p>Somos uma equipa especializada em proporcionar o melhor serviço de barbearia. Com anos de experiência, oferecemos cortes de cabelo e barba personalizados para realçar o seu estilo único.</p>
+        <p>Na BarberShop, valorizamos a qualidade, a atenção aos detalhes e a satisfação do cliente. Venha nos visitar e experimente um atendimento excepcional!</p>
+        
+        <div class="destaques">
+          <div class="destaque-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Profissionais Experientes</span>
+          </div>
+          <div class="destaque-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Atendimento Personalizado</span>
+          </div>
+          <div class="destaque-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Ambiente Acolhedor</span>
+          </div>
+        </div>
+      </div>
 
-<h2>Contacto e localização</h2>
-<section class="mapa" id="contacto" aria-label="Informações de contacto e localização">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51508.76272920395!2d-8.452706540228354!3d41.54726746675553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24febc6cf5d867%3A0xbc5d054162d1e218!2sBraga!5e1!3m2!1spt-PT!2spt!4v1774228246690!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</section>
-  
-<section class="contacto" aria-label="Informações de contacto">
-    <p><strong>Endereço:</strong> Rua Principal, 123, Cidade</p>
-    <p><strong>Telefone:</strong><a href="tel:123456789" class="telefone"> 123 456 789</a> </p>
-    <p><strong>Email:</strong><a href="mailto:info@barbershop.com" class="telefone"> info@barbershop.com</a></p>
-</section>
-
-<section class="marcar" aria-label="Formulário de marcação">
-  <p class="cta-final">Sem filas. Sem espera. Marque já o seu horário.</p>
-  <div class="marquejalast">
-    <a href="marcacao.html" class="marqueja">Marque já a sua visita!</a>
-  </div>
-</section>
-
-<footer>
-  <section class="footer" aria-label="Rodapé do site">
-    <div class="social">
-      <a href="http://instagram.com" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="http://facebook.com"  target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-facebook"></i>
-      </a>
-      <a href="http://tiktok.com" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-tiktok"></i>
-      </a>  
-    </div>  
-    <div class="footer-bottom">
-      <a href="login.html" class="admin-footer">Admin</a>
-
-      <p>© 2026 BarberShop. Todos os direitos reservados.</p>
+      <div class="sobrenos-image">
+        <img src="imagens/sobrenos.jpg" alt="Equipe da BarberShop">
+      </div>
     </div>
   </section>
 
-  
+  <!-- HORÁRIOS -->
+  <section class="horarios-section" id="horarios" aria-label="Horários de funcionamento">
+    <div class="section-header">
+      <h2>Nossos Horários</h2>
+      <p class="section-subtitle">Sempre pronto para atendê-lo</p>
+    </div>
 
-</footer>
+    <div class="horarios-grid">
+      <div class="horario-card">
+        <h4>Segunda a Sexta</h4>
+        <p class="horario-time">09:00 - 13:00</p>
+        <p class="horario-break">Pausa: 13:00 - 14:00</p>
+        <p class="horario-time">14:00 - 20:00</p>
+      </div>
+      <div class="horario-card">
+        <h4>Sábado</h4>
+        <p class="horario-time">09:00 - 13:00</p>
+        <p class="horario-break">Pausa: 13:00 - 14:00</p>
+        <p class="horario-time">14:00 - 20:00</p>
+      </div>
+      <div class="horario-card closed">
+        <h4>Domingo</h4>
+        <p class="closed-text">Encerrado</p>
+      </div>
+    </div>
+  </section>    
+
+  <!-- CONTACTO E LOCALIZAÇÃO -->
+  <section class="contacto-section" id="contacto" aria-label="Contacto e localização">
+    <div class="section-header">
+      <h2>Localização & Contacto</h2>
+      <p class="section-subtitle">Visite-nos ou entre em contacto</p>
+    </div>
+
+    <div class="contacto-container">
+      <div class="mapa-wrapper">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51508.76272920395!2d-8.452706540228354!3d41.54726746675553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24febc6cf5d867%3A0xbc5d054162d1e218!2sBraga!5e1!3m2!1spt-PT!2spt!4v1774228246690!5m2!1spt-PT!2spt" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização da BarberShop">
+        </iframe>
+      </div>
+
+      <div class="contacto-info">
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Endereço</h4>
+            <p>Rua Principal, 123<br>Cidade</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h4>Telefone</h4>
+            <p><a href="tel:+123456789">(123) 456-7890</a></p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@barbershop.com">info@barbershop.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA - AGENDAMENTO FINAL -->
+  <section class="cta-section" aria-label="Chamada para ação">
+    <h2>Pronto para transformar seu visual?</h2>
+    <p>Agende sua visita agora mesmo</p>
+    <a href="marcacao.html" class="cta-button-large">Agendar Agora</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Redes Sociais</h4>
+        <div class="social-links">
+          <a href="http://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="http://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="http://tiktok.com" target="_blank" rel="noopener noreferrer" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <p>&copy; 2026 BarberShop. Todos os direitos reservados.</p>
+      </div>
+
+      <div class="footer-section">
+        <a href="login.html" class="admin-link">Administrador</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

@@ -11,15 +11,21 @@
 <body>
 <header>
     <nav class="nav">
-        <img src="imagens/logo.png" class="logo">
+        <a href="index.html" class="brand" aria-label="BarberShop">
+          <span class="brand-text">BarberShop</span>
+        </a>
     </nav>    
-</header> 
-<h2>Marque a sua visita</h2>
+</header>
+
+<section class="page-header">
+    <h1>Agende sua Visita</h1>
+    <p>Escolha a data e horário que melhor se adapta ao seu cronograma</p>
+</section>
 <section class="marcacao">
     <form id="formMarcacao" class="formulario">
       
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" placeholder="Nome" required>
+        <input type="text" name="Nome" id="nome" placeholder="Nome" required>
         <label for="telefone">Telemóvel</label>
         <input type="tel" name="telefone" id="telefone" placeholder="Telemóvel" required>
         <label for="data">Data</label>
@@ -62,10 +68,12 @@
             <option>Premium/expresso</option>
         </select>
 
-        <button type="submit">Confirmar Marcação</button>    
+
+        <input type="hidden" name="_subject" value="Nova marcação BarberShop">
+        
+        <button type="submit">Comfirmar Marcação</button>    
     </form>
-    <a  href="index.html" class="voltar">Voltar ao site</a>   
-    </div>    
+    <a  href="index.html" class="voltar-btn">Voltar</a>       
 </section>   
 
 <script>
