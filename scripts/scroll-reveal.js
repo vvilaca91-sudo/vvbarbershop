@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Configuração do Intersection Observer
   const observerOptions = {
     threshold: 0.1, // Dispara quando 10% do elemento é visível
-    rootMargin: '0px 0px -50px 0px' // Dispara 50px antes de entrar completamente
+    rootMargin: '0px 0px -20px 0px' // Dispara 20px antes de entrar completamente
   };
 
   const observer = new IntersectionObserver(function(entries) {
@@ -59,44 +59,16 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// ==================== NAVEGAÇÃO ATIVA ====================
+// ==================== NAVEGAÇÃO ====================
 document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-link');
 
-  // Função para remover classe ativa de todos os links
-  function removeActiveClass() {
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-    });
-  }
-
-  // Função para adicionar classe ativa ao link clicado
-  function setActiveLink(link) {
-    removeActiveClass();
-    link.classList.add('active');
-  }
-
-  // Adicionar event listeners aos links
   navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      setActiveLink(this);
+    link.addEventListener('click', function() {
+      this.classList.add('clicked');
+      window.setTimeout(() => {
+        this.classList.remove('clicked');
+      }, 220);
     });
   });
-
-  // Verificar se estamos numa página específica e marcar o link correspondente
-  const currentPath = window.location.pathname;
-  const currentPage = currentPath.split('/').pop() || 'index.html';
-
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage) {
-      link.classList.add('active');
-    }
-  });
-
-  // Se nenhum link estiver ativo (página inicial), ativar o primeiro link
-  const hasActiveLink = Array.from(navLinks).some(link => link.classList.contains('active'));
-  if (!hasActiveLink && currentPage === 'index.html') {
-    navLinks[0].classList.add('active');
-  }
 });
